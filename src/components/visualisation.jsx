@@ -53,16 +53,16 @@ const Visualisation = ({ sequence }) => {
   const canvasRef = useRef(null)
 
   useEffect(() => {
-    if (!canvasRef.current) return
+    if (canvasRef.current) {
+      fancyVisualisation(canvasRef, sequence)
 
-    fancyVisualisation(canvasRef, sequence)
+      window.addEventListener("resize", () =>
+        fancyVisualisation(canvasRef, sequence),
+      )
 
-    window.addEventListener("resize", () =>
-      fancyVisualisation(canvasRef, sequence),
-    )
-
-    return () => {
-      window.removeEventListener("resize", fancyVisualisation)
+      return () => {
+        window.removeEventListener("resize", fancyVisualisation)
+      }
     }
   }, [sequence, canvasRef])
 
