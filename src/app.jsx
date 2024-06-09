@@ -1,9 +1,12 @@
 import Visual from "./components/visual/visual"
+import VisualSvg from "./components/visualSvg/visualSvg"
 
 const App = () => {
   return (
-    <div className="min-h-screen bg-slate-900">
+    <div className="bg-slate-900">
       <Visual />
+      <hr />
+      <VisualSvg />
     </div>
   )
 }
