@@ -1,8 +1,4 @@
-import { useEffect, useRef } from "react"
-
-const fancyVisualisation = (canvasRef, sequence) => {
-  const canvas = canvasRef.current
-
+const draw = (canvas, sequence) => {
   canvas.width = canvas.parentElement.clientWidth
   canvas.height = canvas.parentElement.clientHeight
 
@@ -49,24 +45,4 @@ const fancyVisualisation = (canvasRef, sequence) => {
   context.restore()
 }
 
-const Visualisation = ({ sequence }) => {
-  const canvasRef = useRef(null)
-
-  useEffect(() => {
-    if (canvasRef.current) {
-      fancyVisualisation(canvasRef, sequence)
-
-      window.addEventListener("resize", () =>
-        fancyVisualisation(canvasRef, sequence),
-      )
-
-      return () => {
-        window.removeEventListener("resize", fancyVisualisation)
-      }
-    }
-  }, [sequence, canvasRef])
-
-  return <canvas ref={canvasRef} />
-}
-
-export default Visualisation
+export { draw }

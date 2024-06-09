@@ -1,4 +1,4 @@
-const Controls = ({ sequenceLength, setSequenceLength }) => {
+const Controls = ({ sequenceLength = 100, setSequenceLength }) => {
   return (
     <div className="absolute right-0 top-0 flex flex-col gap-1 p-4">
       <input
