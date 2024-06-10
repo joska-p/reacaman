@@ -4,7 +4,7 @@ import { drawSvg } from "./drawSvg"
 
 const VisualSvg = () => {
   const svgRef = useRef(null)
-  const memoizedSequence = useMemo(() => createRacamanSequence(50), [])
+  const memoizedSequence = useMemo(() => createRacamanSequence(100), [])
 
   useEffect(() => {
     if (svgRef.current) {
@@ -16,7 +16,7 @@ const VisualSvg = () => {
     <div>
       <svg
         ref={svgRef}
-        className="h-full w-full fill-none stroke-slate-400"
+        className="h-full w-full fill-transparent stroke-slate-400 stroke-1"
       ></svg>
     </div>
   )

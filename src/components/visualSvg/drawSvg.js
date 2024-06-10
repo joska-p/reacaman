@@ -11,19 +11,19 @@ const drawSvg = (svg, sequence) => {
   let path = ""
   sequence.forEach((value, index) => {
     const previousValue = sequence[index - 1]
-    const middleValue = (previousValue + value) / 2
     const radius = Math.abs(value - previousValue) / 2
 
     if (index > 0) {
-      if (index % 2 === 0) {
-        path += `  A ${radius} ${radius} 0 0 1 ${value} ${magicY}`
-      } else {
-        path += `  A ${radius} ${radius} 0 0 0 ${value} ${magicY}`
-      }
+      if (
+        (index % 2 === 0 && previousValue > value) ||
+        (index % 2 !== 0 && previousValue < value)
+      ) {
+        path += ` A ${radius} ${radius} 0 0 1 ${value} ${magicY}`
+      } else path += `  A ${radius} ${radius} 0 0 0 ${value} ${magicY}`
     }
   })
 
-  svg.innerHTML += `<path d="M 0 ${magicY}${path} stroke-width='1' fill='none' vector-effect='non-scaling-stroke"/>`
+  svg.innerHTML += `<path d=" M 0 ${magicY}${path}" style="vector-effect:non-scaling-stroke"/>`
 }
 
 export { drawSvg }
