@@ -4,7 +4,7 @@ const drawSvg = (svg, sequence) => {
   let height = valueMax / 2
 
   //reset the svg
-  svg.innerHTML = "<style>vector-effect:non-scaling-stroke</style>"
+  svg.innerHTML = ""
   svg.setAttribute("xmlns", "http://www.w3.org/2000/svg")
   svg.setAttribute("viewBox", `0 0 ${valueMax} ${height}`)
 
@@ -29,7 +29,7 @@ const drawSvg = (svg, sequence) => {
     }
   })
 
-  svg.innerHTML += `<path d="M 0 0${path}" transform="translate(0, ${y0})" style="vector-effect:non-scaling-stroke"/>`
+  svg.innerHTML += `<path class="path" d="M 0 0${path}" transform="translate(0, ${y0})" style="vector-effect:non-scaling-stroke"/>`
 }
 
 export { drawSvg }

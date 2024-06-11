@@ -3,9 +3,7 @@ import VisualSvg from "./components/visualSvg/visualSvg"
 
 const App = () => {
   return (
-    <div className="bg-slate-900">
-      <Visual />
-      <hr />
+    <div className="flex min-h-screen flex-col justify-center bg-slate-900 align-middle">
       <VisualSvg />
     </div>
   )

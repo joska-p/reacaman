@@ -1,0 +1,6 @@
+.path {
+  --dasharray: 0;
+  --dashoffset: 0;
+  stroke-dasharray: var(--dasharray);
+  stroke-dashoffset: var(--dashoffset);
+}
