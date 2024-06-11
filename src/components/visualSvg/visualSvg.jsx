@@ -1,4 +1,4 @@
-import { useRef, useMemo, useEffect, useState, useCallback } from "react"
+import { useRef, useMemo, useEffect, useState } from "react"
 import Controls from "./controlsSvg"
 import { createRacamanSequence } from "../../racaman/racaman"
 import { drawSvg } from "./drawSvg"
@@ -11,16 +11,10 @@ const VisualSvg = () => {
     () => createRacamanSequence(sequenceLength),
     [sequenceLength],
   )
-  const callbackDrawSvg = useCallback(
-    (svg, sequence) => {
-      drawSvg(svg, sequence)
-    },
-    [drawSvg],
-  )
 
   useEffect(() => {
     if (svgRef.current) {
-      callbackDrawSvg(svgRef.current, memoizedSequence)
+      drawSvg(svgRef.current, memoizedSequence)
     }
   }, [svgRef, memoizedSequence])
 
@@ -33,7 +27,7 @@ const VisualSvg = () => {
 
       <svg
         ref={svgRef}
-        className="w-full fill-transparent stroke-slate-400 stroke-1"
+        className="h-screen w-full fill-transparent stroke-slate-400 stroke-1"
       ></svg>
     </div>
   )
