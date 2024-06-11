@@ -1,10 +1,15 @@
-import { useRef, useMemo, useEffect } from "react"
+import { useRef, useMemo, useEffect, useState } from "react"
+import Controls from "./controlsSvg"
 import { createRacamanSequence } from "../../racaman/racaman"
 import { drawSvg } from "./drawSvg"
 
 const VisualSvg = () => {
   const svgRef = useRef(null)
-  const memoizedSequence = useMemo(() => createRacamanSequence(100), [])
+  const [sequenceLength, setSequenceLength] = useState(57)
+  const memoizedSequence = useMemo(
+    () => createRacamanSequence(sequenceLength),
+    [sequenceLength],
+  )
 
   useEffect(() => {
     if (svgRef.current) {
@@ -13,10 +18,15 @@ const VisualSvg = () => {
   }, [svgRef, memoizedSequence])
 
   return (
-    <div>
+    <div className="relative">
+      <Controls
+        sequenceLength={sequenceLength}
+        setSequenceLength={setSequenceLength}
+      />
+
       <svg
         ref={svgRef}
-        className="h-full w-full fill-transparent stroke-slate-400 stroke-1"
+        className="w-full fill-transparent stroke-slate-400 stroke-1"
       ></svg>
     </div>
   )

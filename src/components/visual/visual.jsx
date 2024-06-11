@@ -31,12 +31,12 @@ const Visual = () => {
   }, [canvasRef, memoizedSequence])
 
   return (
-    <div>
+    <div className="relative">
       <Controls
         sequenceLength={sequenceLength}
         setSequenceLength={setSequenceLength}
       />
-      <canvas ref={canvasRef} className="h-screen w-full" />
+      <canvas ref={canvasRef} className="w-full" />
     </div>
   )
 }

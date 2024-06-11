@@ -1,6 +1,6 @@
 const draw = (canvas, sequence) => {
   canvas.width = canvas.parentElement.clientWidth
-  canvas.height = canvas.parentElement.clientHeight
+  canvas.height = canvas.width / 2
 
   const context = canvas.getContext("2d")
   const valueMin = Math.min(...sequence)
@@ -16,27 +16,13 @@ const draw = (canvas, sequence) => {
   sequence.forEach((value, index) => {
     if (index > 0) {
       const previousValue = sequence[index - 1]
-      const middleValue = (previousValue + value) / 2
-      const radius = Math.abs(value - previousValue) / 2
+      const middleValue = ((previousValue + value) / 2) * valueScale
+      const radius = (Math.abs(value - previousValue) / 2) * valueScale
 
       context.beginPath()
 
-      if (index % 2 === 0)
-        context.arc(
-          middleValue * valueScale,
-          0,
-          radius * valueScale,
-          0,
-          Math.PI,
-        )
-      else
-        context.arc(
-          middleValue * valueScale,
-          0,
-          radius * valueScale,
-          Math.PI,
-          0,
-        )
+      if (index % 2 === 0) context.arc(middleValue, 0, radius, 0, Math.PI)
+      else context.arc(middleValue, 0, radius, Math.PI, 0)
 
       context.stroke()
     }
