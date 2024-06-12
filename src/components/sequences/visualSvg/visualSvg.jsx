@@ -1,6 +1,6 @@
 import { useRef, useMemo, useEffect, useState } from "react"
 import Controls from "./controlsSvg"
-import { createRacamanSequence } from "../../racaman/racaman"
+import { createRacamanSequence } from "../../../racaman/racaman"
 import { drawSvg } from "./drawSvg"
 import "./visualSvg.css"
 
